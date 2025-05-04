@@ -2,11 +2,56 @@
   Movie #<%= @the_movie.id %> details
 </h1>
 
-<a href="/movies">
-  Go back
-</a>
+<div>
+  <a href="/movies">
+    Go back
+  </a>
+
+  </div>
+
+  <div>
+<a href="/delete_movie/<%= @the_movie.id %>">Delete movie</a>
 
 <hr>
+
+
+<form action="/modify_movie_record/<%= @the_movie.id %>" method="post">
+<div>
+  <label for="title_field">Title</label>
+  <input id="title_field" type="text" name="the_title">
+</div>
+
+<div>
+    <label for="year_field">Year</label>
+    <input id="year_field" type="text" name="the_year">
+</div>
+
+<div>
+    <label for="duration_field">Duration</label>
+    <input id="duration_field" type="text" name="the_duration">
+</div>
+
+<div>
+    <label for="description_field">Description</label>
+    <input id="description_field" type="text" name="the_description">
+</div>
+
+<div>
+    <label for="image_field">Image</label>
+    <input id="image_field" type="text" name="the_image">
+</div>
+
+<div>
+    <label for="director_id_field">Director ID</label>
+    <input id="director_id_field" type="text" name="the_director_id">
+</div>
+
+<button>
+  Update movie
+</button>
+
+</form>
+
 
 <dl>
   <dt>
@@ -54,7 +99,14 @@
     
     <% the_director = matching_directors.at(0) %>
 
-    <%= the_director.name %>
+    <% if the_director == nil %>
+    	Uh oh! We weren't able to find a director for this movie.
+
+    <% else %>
+
+    <%= the_director.name%>
+
+    <% end %>
   </dd>
 
   <dt>
