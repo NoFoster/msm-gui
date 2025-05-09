@@ -5,7 +5,7 @@ class ActorsController < ApplicationController
     m_id = params.fetch("the_id")
 
     # Look up the existing record
-    matching_records = Director.where({ :id => m_id })
+    matching_records = Actor.where({ :id => m_id })
     the_actor = matching_records.at(0)
 
     # Overwrite each column with the values from user inputs
